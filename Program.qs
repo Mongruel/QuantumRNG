@@ -33,6 +33,8 @@ namespace QuantumRNG {
                 // Sums new bit
                 set bits += [GenerateRandomBit()];
             }
+            // Converts bits to decimals
+            set output = ResultArrayAsInt(bits);
         } until (output <= max);
         
         return output;
