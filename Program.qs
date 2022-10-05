@@ -19,7 +19,7 @@ namespace QuantumRNG {
     }
 
     // Takes max (number) as a maximum value for the output
-    operation SampleRandomNumberInRange(max: Int) : Int {
+    operation SampleRandomNumberInRange(min: Int, max: Int) : Int {
         // Mutable: A type of object whose data members, such as properties, data and fields, can be modified after its creation
         mutable output = 0;
 
@@ -34,7 +34,7 @@ namespace QuantumRNG {
             }
             // Converts bits to decimals
             set output = ResultArrayAsInt(bits);
-        } until (output <= max);
+        } until (output <= max and output>= min);
         
         return output;
     }
@@ -42,7 +42,8 @@ namespace QuantumRNG {
     @EntryPoint()
     operation SampleRandomNumber() : Int {
         let max = 50;
+        let min = 10;
         Message($"Sampling a random number between 0 and {max}: ");
-        return SampleRandomNumberInRange(max);
+        return SampleRandomNumberInRange(min, max);
     }
 }
