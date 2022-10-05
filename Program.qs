@@ -5,7 +5,6 @@ namespace QuantumRNG {
     open Microsoft.Quantum.Math;
     open Microsoft.Quantum.Convert;
 
-    @EntryPoint()
     // Define operation and its name
     // Define an output
     operation GenerateRandomBit() : Result {
@@ -38,5 +37,12 @@ namespace QuantumRNG {
         } until (output <= max);
         
         return output;
+    }
+
+    @EntryPoint()
+    operation SampleRandomNumber() : Int {
+        let max = 50;
+        Message($"Sampling a random number between 0 and {max}: ");
+        return SampleRandomNumberInRange(max);
     }
 }
